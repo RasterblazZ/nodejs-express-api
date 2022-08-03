@@ -7,7 +7,12 @@ const res = require('express/lib/response');
 //Convierte en json los valores de body
 const bodyParser = require("body-parser");
 const app = express();
+
+//TOKEN CONTROLLER
 const tokenController = require('./src/controller/token.controller');
+
+//PRINCIPAL ROUTER
+const principalRouter = require('./src/router/principal.router');
 
 const estatus = process.env.ENVIROMENT
 
@@ -51,7 +56,7 @@ app.get(
     }
 )
 //Router
-
+app.use(process.env.APP_NAME,principalRouter)
 //If route does not exists, it will be enter here
 app.use(function(req,res,next){
     let json_res = {
