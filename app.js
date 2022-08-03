@@ -56,7 +56,7 @@ app.get(
     }
 )
 //Router
-app.use(process.env.APP_NAME,principalRouter)
+app.use(`/${process.env.APP_NAME}`,principalRouter)
 //If route does not exists, it will be enter here
 app.use(function(req,res,next){
     let json_res = {
